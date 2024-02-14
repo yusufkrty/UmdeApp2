@@ -1,10 +1,14 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
+app.use(express.static('public'));
+app.use(cors());
+
 
 mongoose
   .connect("mongodb://0.0.0.0:27017/rest")
@@ -30,6 +34,7 @@ const Product = mongoose.model("Product", {
 
 app.post("/categories", async (req, res) => {
   try {
+    //console.log(req.body);
     const category = new Category(req.body);
     await category.save();
     res.status(201).json(category);
@@ -120,6 +125,11 @@ app.delete("/products/:id", async (req, res) => {
   }
 });
 
+
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+
+
