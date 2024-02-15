@@ -139,22 +139,32 @@ const server = app.listen(PORT)
 
 
 
-app.use(express.static('public'))
+
 
 //socket icerisine server tanımladık
-const io = socket(server)
+const io = socket(server, {
+  cors:
+  {
+    origin:"*",
+    methods:["GET","POST"]
+  }
+})
 
 //conn kontrolü bağlantı gerçekleşirse algılayacağoz
 io.on('connection',(socket) =>{
     console.log(socket.id)
 
     socket.on('chat', data =>{
-        io.sockets.emit('chat',data)
+        io.sockets.emit('chat',data);
+        console.log("mesaj:"+data.message);
     })
     socket.on('typing',data =>{
         socket.broadcast.emit('typing',data)
     })
 })
+
+
+app.use(express.static('public'))
 
 
 

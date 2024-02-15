@@ -4,6 +4,7 @@ import axios from "axios";
 function CategoryList() {
   const [categories, setCategories] = useState([]);
 
+  //useEffect parantez boş olduğu için bir kere çalıştırılır.Backende yük olmaz
   useEffect(() => {
     axios
       .get("http://localhost:5000/categories")

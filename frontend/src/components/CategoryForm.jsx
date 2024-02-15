@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 
 function CategoryForm() {
+  //useState değişkenin durumunu tutar
   const [categoryName, setCategoryName] = useState("");
 
   const handleFormSubmit = (event) => {
