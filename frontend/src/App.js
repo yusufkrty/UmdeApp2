@@ -4,6 +4,7 @@ import ProductList from "./components/ProductList";
 import CategoryList from "./components/CategoryList";
 import ProductForm from "./components/ProductForm";
 import CategoryForm from "./components/CategoryForm";
+import ChatApp from "./components/ChatApp";
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
           <div>
             <Link to="/categories/add">Add Category</Link>
           </div>
+          <div>
+            <Link to="/chatapp">ChatApp</Link>
+          </div>
         </nav>
 
         <hr />
@@ -30,6 +34,8 @@ function App() {
           <Route path="/products/add" element={<ProductForm />} />
           <Route path="/categories" element={<CategoryList />} />
           <Route path="/categories/add" element={<CategoryForm />} />
+          <Route path="/chatapp" element={<ChatApp />} />
+          
         </Routes>
       </div>
     </Router>
